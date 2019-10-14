@@ -1,0 +1,16 @@
+---
+ - name: learning handlers
+   hosts: sd
+   become: yes
+   #remote_user: shekhar   
+   tasks:
+    - name: adding users
+      user:
+       name: intel
+       state: presentt
+      notify: services
+   handlers: 
+        - name: services
+          service: 
+            name: firewalld
+            state: restarted

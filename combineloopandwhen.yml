@@ -1,0 +1,21 @@
+--- 
+ - name: combine loop and when condition
+   hosts: sd
+   vars:
+     mypackage: httpd
+     webpackage: mod_ssl
+   tasks:
+    - name: install {{ mypackage }}  
+      yum:
+       name: "{{ mypackage }}"
+       state: present
+      tags:
+       - boss
+      when: inventory_hostname in groups ['boss']
+    - name: install {{ webpackage }}  
+      yum:
+       name: "{{ webpackage }}"
+       state: present
+      tags:
+       - anna
+      when: inventory_hostname in groups ['anna']

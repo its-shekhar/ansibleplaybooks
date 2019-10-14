@@ -1,0 +1,15 @@
+---
+ - name: learning sequence
+   hosts: sd
+   tasks: 
+    - name: adding user
+      user: 
+       name: "{{ item }}"
+       state: present
+      with_sequence: start=10 end=20 format=user%3f stride=3
+
+
+
+stride is used for jump like 3 no away 
+3x 3f we can also use here
+      

@@ -1,0 +1,18 @@
+---
+ - name: learning handlers
+   hosts: sd
+   become: yes
+   #remote_user: shekhar   
+   tasks:
+    - block: 
+       - name: adding users
+         user:
+          name: intel
+          state: present
+       - name: services
+         service: 
+          name: firewalld
+          state: restarted
+      always:
+       - name: putting error msg
+         debug: msg='it is an error'

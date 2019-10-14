@@ -1,0 +1,10 @@
+---
+ - name: learning sequence
+   hosts: sd
+   tasks: 
+    - name: adding user
+      user: 
+       name: "{{ item }}"
+       state: present
+      with_sequence: start=1 end=10 format=user%0x
+      

@@ -1,0 +1,13 @@
+---
+ - name: learning nested loop
+   hosts: sd
+   tasks: 
+    - name: adding user
+      user: 
+        name: "{{ item[0] }}"
+        state: present 
+        groups: "{{  item[1] }}" 
+        append: true
+      with_nested:
+        - [ user1,user2 ]
+        - [ wheel ]

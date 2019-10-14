@@ -1,0 +1,9 @@
+---
+ - name: learning when
+   hosts: sd
+   tasks:
+    - name: install httpd
+      yum:
+       name: httpd
+       state: present
+      when: ansible_distribution=="centos" or ansible_distribution=="debian"

@@ -1,0 +1,8 @@
+--- 
+ - name: all hostname and ip and cpu cout will show in one line 
+   hosts: sd 
+   tasks: 
+    - name: fact 
+      copy:
+        dest: /root/diplay
+        content: "{{ ansible_all_ipv4_addresses }}  {{ ansible_processor_count }} {{ ansible_fqdn}}"

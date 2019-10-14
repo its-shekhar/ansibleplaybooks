@@ -1,0 +1,17 @@
+---
+ - name: learning nested loop
+   hosts: sd
+   tasks: 
+    - name: adding user
+      group: 
+        name: unnati
+        state: present 
+    - name: adding user
+      user: 
+        name: "{{ item[0] }}"
+        state: present 
+        groups: "{{  item[1] }}" 
+        append: true
+      with_nested:
+        - [ user3,user4 ]
+        - [ unnati ]

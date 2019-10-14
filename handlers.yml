@@ -1,0 +1,19 @@
+---
+ - name: learning handlers
+   hosts: sd
+   become: yes
+   #remote_user: shekhar   
+   tasks:
+    - name: adding users
+      user:
+       name: intel
+       state: present
+    - name: creating file 
+      file: 
+       path: /root/sd.txt
+       state: touchh
+      ignore_errors: yes 
+    - name: adding directory
+      file:
+       path: /root/dell
+       state: directory 
